@@ -543,3 +543,252 @@ footer {
         padding: 1rem;
     }
 }
+/*event formate*/
+
+/* Add these styles to your existing CSS */
+
+.event-format {
+    padding: 80px 0;
+    background: rgba(33, 33, 33, 0.9);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .event-format::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><rect width="60" height="60" fill="none"/><path d="M0 0h60v60H0z" fill="none"/><path d="M30 30m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" fill="rgba(255,255,255,0.1)"/></svg>')
+      repeat;
+    opacity: 0.1;
+    z-index: 1;
+  }
+  
+  .format-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 2;
+  }
+  
+  .format-title {
+    text-align: center;
+    font-size: 2.5em;
+    color: #ccbebe;
+    margin-bottom: 60px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+  }
+  
+  .format-title::after {
+    content: "";
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #00ff88, #00a1ff);
+  }
+  
+  .format-timeline {
+    position: relative;
+    padding: 40px 0;
+  }
+  
+  .format-timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg, transparent, #8a8282, #ccbebe, transparent);
+  }
+  
+  .timeline-item {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 30px;
+    position: relative;
+    margin-bottom: 40px;
+    width: 50%;
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all 0.5s ease;
+  }
+  
+  .timeline-item.revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  
+  .timeline-item:nth-child(even) {
+    align-self: flex-end;
+    justify-content: flex-start;
+    padding-left: 30px;
+    padding-right: 0;
+    margin-left: 50%;
+    transform: translateX(100px);
+  }
+  
+  .timeline-item:nth-child(even).revealed {
+    transform: translateX(0);
+  }
+  
+  .timeline-icon {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: #8a8282;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    right: -20px;
+    box-shadow: 0 0 20px rgba(138, 130, 130, 0.3);
+  }
+  
+  .timeline-item:nth-child(even) .timeline-icon {
+    right: auto;
+    left: -20px;
+  }
+  
+  .timeline-content {
+    background: rgba(204, 190, 190, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(100% - 40px);
+    transition: transform 0.3s ease;
+  }
+  
+  .timeline-content:hover {
+    transform: translateY(-5px);
+    background: rgba(204, 190, 190, 0.1);
+  }
+  
+  .timeline-content h3 {
+    color: #8a8282;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+  
+  .timeline-content p {
+    color: #ccbebe;
+    line-height: 1.6;
+  }
+  
+  .format-cards {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+  }
+  
+  .format-card {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    cursor: pointer;
+  }
+  
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+  }
+  
+  .format-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .card-front,
+  .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    background: linear-gradient(135deg, rgba(0, 255, 136, 0.1) 0%, rgba(0, 161, 255, 0.1) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .card-back {
+    transform: rotateY(180deg);
+    background: linear-gradient(135deg, rgba(0, 161, 255, 0.1) 0%, rgba(0, 255, 136, 0.1) 100%);
+  }
+  
+  .card-front h3 {
+    color: #00ff88;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .card-front p,
+  .card-back p {
+    color: #fff;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .format-timeline::before {
+      left: 20px;
+    }
+  
+    .timeline-item {
+      width: 100%;
+      padding-left: 45px;
+      padding-right: 0;
+    }
+  
+    .timeline-item:nth-child(even) {
+      margin-left: 0;
+      padding-left: 45px;
+    }
+  
+    .timeline-icon {
+      left: 0;
+      right: auto;
+    }
+  
+    .timeline-item:nth-child(even) .timeline-icon {
+      left: 0;
+    }
+  
+    .timeline-content {
+      width: 100%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .format-title {
+      font-size: 2em;
+    }
+  
+    .timeline-content {
+      padding: 15px;
+    }
+  
+    .format-card {
+      width: 260px;
+      height: 180px;
+    }
+  }
+  
+/*event formate end*/  
+
